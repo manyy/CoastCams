@@ -9,9 +9,9 @@ clc
 
 
 % Path to scripts
-addpath(genpath('G:\MATLAB_20221128\Users_Scripts\'))
+addpath(genpath('CoastCams\UserScripts\'))
 % Path to Timestacks
-path = 'G:\MATLAB_20221128\Timestacks\Camera1_Rectified\';
+path = 'CoastCams\TimestackImages\';
 % Plot option: If user wants to plot figures in progress
 plotoption = 1;
 % Camera
