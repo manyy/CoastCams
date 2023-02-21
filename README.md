@@ -1,2 +1,2 @@
-# CoastCam
-CoastCam is an open-source collection of MATLAB scripts to quantify key wave parameters (e.g. significant wave height, peak wave period), sea levels (e.g. tidal elevation), and shoreline positions in the nearshore environment. 
+# CoastCams
+CoastCams is an open-source collection of MATLAB scripts to quantify key wave parameters (e.g. significant wave height, peak wave period), sea levels (e.g. tidal elevation, water depth), and morphology (e.g. shoreline positions, bathymetry) in the nearshore environment. The repository performs the analysis on oblique georectified timestack images from land-based coastal monitoring systems. This novel approach is a combination of several key parameters that aims to get a better understanding of nearshore processes and provide coastal managers, engineers, and scientists with a user-friendly and practical method to monitor and identify key drivers in coastal zone. 
