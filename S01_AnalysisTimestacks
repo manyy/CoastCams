@@ -1,6 +1,5 @@
-% This script will compute wave parameters from timestacks (e.g. wave
-% height, wave period, wave celerity, depth) which can be used to
-% recontstruct bathymetry over time. 
+% This script will compute wave parameters from timestack images (e.g. wave
+% height, wave period, wave celerity), sea levels (e.g. tidal elevation), and morphology (e.g. shoreline positions).
 
 %% Housekeeping
 close all
@@ -8,7 +7,7 @@ clear all
 clc
 
 % Path to scripts
-addpath(genpath('G:\MATLAB_20221128\Users_Scripts\'))
+addpath(genpath('G:\MATLAB\Users_Scripts\'))
 % Path to Timestacks
 path = 'G:\MATLAB_20221128\Timestacks\Camera1_Rectified\';
 % Plot option: If user wants to plot figures in progress
