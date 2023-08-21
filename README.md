@@ -16,3 +16,4 @@ If you're willing to contribute:
 More information can be found in the following publication: 
 
 Nuyts, S., Almar, R., Morichon, D., Dealbera, S., Abalia, A., Muñoz, J. M., Abessolo, G. O., & Regard, V. (2023). CoastCams: A MATLAB toolbox making accessible estimations of nearshore processes, mean water levels, and morphology from timestack images. Environmental Modelling & Software, 168, 105800. https://doi.org/https://doi.org/10.1016/j.envsoft.2023.105800 
+
