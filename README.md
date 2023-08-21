@@ -11,8 +11,8 @@ If you're willing to contribute:
 3. Commit your changes and push them to your branch
 4. When the branch is ready to be merged, create a Pull Request (how to make a clean pull request explained here)
 
+## Publication
+
 More information can be found in the following publication: 
 
 Nuyts, S., Almar, R., Morichon, D., Dealbera, S., Abalia, A., Muñoz, J. M., Abessolo, G. O., & Regard, V. (2023). CoastCams: A MATLAB toolbox making accessible estimations of nearshore processes, mean water levels, and morphology from timestack images. Environmental Modelling & Software, 168, 105800. https://doi.org/https://doi.org/10.1016/j.envsoft.2023.105800 
-
-Please cite 
