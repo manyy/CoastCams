@@ -1,3 +1,12 @@
+%%%%%%%%%%%%%% COASTCAMS %%%%%%%%%%%%%
+% Please cite when using CoastCams: 
+
+% Nuyts, S., Almar, R., Morichon, D., Dealbera, S., Abalia, A., Muñoz, J. M., Abessolo, G. O., & Regard, V. (2023). 
+% CoastCams: A MATLAB toolbox making accessible estimations of nearshore processes, mean water levels, and morphology from timestack images. 
+% Environmental Modelling & Software, 168, 105800. https://doi.org/https://doi.org/10.1016/j.envsoft.2023.105800 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % This script will compute nearshore processes from timestacks (e.g. wave
 % height, wave period, wave celerity), sea levels (e.g. tidal elevation), 
 % and morphology (e.g. shoreline positions).
