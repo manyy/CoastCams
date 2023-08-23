@@ -14,10 +14,9 @@ The only user inputs are required in [S01_AnalysisTimestackImages](https://githu
 Follow these steps:
 1. Open S01_AnalysisTimestackImages
 2. Add all paths to your MATLAB workspace in section B;
-4. Select the timestack images in section C;
-5. Add your specific parameters for image processing in section D:
-   *D1
-
+3. Select the timestack images in section C;
+4. Add your specific parameters for image processing in section D:
+   * D1;
    * dt = Frequency acquisition of the camera e.g., freq = 2 (2 images per second);
    * H_camera = Camera height above MSL im metre;
    * res = Size of each pixel on timestack image in metre;
