@@ -15,15 +15,21 @@ Follow these steps:
 1. Open S01_AnalysisTimestackImages
 2. Add all paths to your MATLAB workspace in section B;
 3. Select the timestack images in section C;
-4. Add your specific parameters for image processing in section D:
-   * ⋅⋅⋅D1⋅⋅
+4. Add your specific parameters for image processing in section D1:
    * dt = Frequency acquisition of the camera e.g., freq = 2 (2 images per second);
    * H_camera = Camera height above MSL im metre;
    * res = Size of each pixel on timestack image in metre;
    * rotation = Waves in the timestack image should come from top-left corner - rotate the timestack image accordingly
-
-
-
+5. Add your specific camera parameters in section D2:
+   * dur = duration of the timestack images in minutes
+6. Add your specific parameters for cross-correlation computation:
+   * Nlim = width of the timestack images in pixels;
+   * dpha = Time lag parameters used for cross-correlation calculations. This should be smaller than the smallest wave period;
+   * icmin = Minimum value on the x-axis for pre-processing;
+   * icmax = Maximum value on the x-axis for pre-processing;
+   * dc = Cross-correlation parameter see Thuan et al., 2019 and Abessolo et al., 2020 - Figure 2 above
+  
+Ones these parameters are defined, CoastCams calculates the different outputs automatically.
 
 ## Contributing and Issues
 Having a problem? Post an issue in the [Issues Page](https://github.com/NuytsSiegmund/CoastCams/issues)
