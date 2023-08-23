@@ -9,7 +9,7 @@ If you're willing to contribute:
 1. Fork the repository. A fork is a copy on which you can make your changes.
 2. Create a new branch on your fork
 3. Commit your changes and push them to your branch
-4. When the branch is ready to be merged, create a Pull Request (how to make a clean pull request explained here)
+4. When the branch is ready to be merged, create a Pull Request (how to make a clean pull request explained [here](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request))
 
 ## Publication
 
