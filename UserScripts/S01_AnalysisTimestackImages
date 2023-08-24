@@ -70,6 +70,8 @@ BreakpointLocation = []; Cf1 = []; WLe1 = []; Depth_S = []; ShorePosition = []; 
 
 %% F: Coordinate System
 % Transfer pixel coordinates to real life coordinates 
+% Create a .txt file representing coordinates of the timestack image and select option
+coordinateoption = 1; % If user wants to transfer pixel coordinates to real life coordinates
 coordinates = load('G:\MATLAB\UserScripts\Coordinates.txt');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% END ALL USER INPUT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -242,8 +244,10 @@ for i = 1:length(Img);
     Stack_ro = imrotate(Stack_av, 90);
     
     % Step 11: Convert to real life coordinates
+if coordinateoption == 1;
     BL_Lam_Mid = coordinates(BreakLocs, :);
     BL_Coordinates = [BL_Coordinates; BL_Lam_Mid]; 
+end
 end
 
 %% H: Pixels coordinates to real life coordinates
