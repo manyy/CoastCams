@@ -7,8 +7,8 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% This script will compute nearshore processes from timestacks (e.g. wave
-% height, wave period, wave celerity), sea levels (e.g. tidal elevation), 
+% This script will compute nearshore processes from timestack images (e.g. wave
+% height, wave period, wave celerity), mean water levels, 
 % and morphology (e.g. shoreline positions).
 
 %% A: Housekeeping
@@ -20,11 +20,11 @@ clc
 
 %% B: Add paths
 % B1: Path to User Scripts
-addpath(genpath('G:\MATLAB_20221128\Users_Scripts\'))
+addpath(genpath('E:\MATLAB_\UsersScripts\'))
 % B2: Path to Timestack Images
-img_path = 'G:\MATLAB_20221128\Timestacks\Camera1_Rectified\';
+img_path = 'E:\MATLAB\Timestacks\';
 % B3: Output path: Location where outputs will be stored
-out_path = 'G:\MATLAB_20221128\Output\';
+out_path = 'E:\MATLAB\Output\';
 
 %% C: Select Timestack Images
 Img = dir([img_path,strcat('**/S_1_*.jpeg')]); % Name should include datetime as S_1_yyyymmddHHMM e.g. "S_1_202212310700.jpeg"
@@ -69,10 +69,11 @@ Img_date = []; WaveCelerity = []; df = []; WaveLength = []; Hs_TS = []; Tp_TS = 
 BreakpointLocation = []; Cf1 = []; WLe1 = []; Depth_S = []; ShorePosition = []; Stack_av = []; BL_Coordinates = []; WaterDepth_L = [];
 
 %% F: Coordinate System
+% (Not an essential step)
 % Transfer pixel coordinates to real life coordinates 
-% Create a .txt file representing coordinates of the timestack image and select option
-coordinateoption = 1; % If user wants to transfer pixel coordinates to real life coordinates
-coordinates = load('G:\MATLAB\UserScripts\Coordinates.txt');
+% Create a .txt file with real life xy coordinates for pixel coordinates
+coordinate_option = 0; % 0 if no tranformation is needed, 1 if user wants to transform pixel coordinates to real life coordinates
+coordinates = load('E:\MATLAB\UsersScripts\Coordinates.txt');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% END ALL USER INPUT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -244,28 +245,30 @@ for i = 1:length(Img);
     Stack_ro = imrotate(Stack_av, 90);
     
     % Step 11: Convert to real life coordinates
-if coordinateoption == 1;
-    BL_Lam_Mid = coordinates(BreakLocs, :);
-    BL_Coordinates = [BL_Coordinates; BL_Lam_Mid]; 
-end
+    if coordinate_option == 1;
+        BL_Lam_Mid = coordinates(BreakLocs, :);
+        BL_Coordinates = [BL_Coordinates; BL_Lam_Mid]; 
+    end
 end
 
 %% H: Pixels coordinates to real life coordinates
-BL_Coordinates_x = BL_Coordinates(:, 1);
-BL_Coordinates_y = BL_Coordinates(:, 2);
-BL_Coordinates = timetable(Time_TS, BL_Coordinates_x, BL_Coordinates_y);
-writetimetable(BL_Coordinates, 'BL_Coordinates.txt');
+if coordinate_option == 1;
+    BL_Coordinates_x = BL_Coordinates(:, 1);
+    BL_Coordinates_y = BL_Coordinates(:, 2);
+    BL_Coordinates = timetable(Time_TS, BL_Coordinates_x, BL_Coordinates_y);
+    writetimetable(BL_Coordinates, 'BL_Coordinates.txt');
+end
 
 %% I: Collecting all parameters from Timestack Image
 % Create common timetable
 disp(num2str(length(Img)))
-WP = timetable(Time_TS, BreakpointLocation, BreakpointDepth, Hs_TS, WaveEnergy, RollerLength,  WaveCelerity(:,[1:numel(sLimit)]), Tp_TS, Tm_TS, WaveLength, WaterDepth_L, ShorePosition, SLA_S, SLA_L, RTR, Bathymetry_S, Bathymetry_L);
+WP = timetable(Time_TS, BreakpointLocation, BreakpointDepth, Hs_TS, WaveEnergy, RollerLength,  WaveCelerity(:,[1:numel(sLimit)]), Tp_TS, Tm_TS, WaveLength, WaterDepth_L, ShorePosition, SLA_S, SLA_L, RTR, Bathymetry);
 Data_TS = retime(WP, 'regular', 'mean', 'TimeStep', minutes(15));
-Data_TS.Properties.VariableNames = {'BreakPointLocation', 'BreakpointDepth', 'Hs', 'WaveEnergy', 'RollerLength', 'WaveCelerity', 'Tp', 'Tm', 'WaveLength', 'WaterDepth', 'ShorelinePosition', 'SLA_S', 'SLA_L', 'RTR', 'Bathymetry_S', 'Bathymetry_L'};
+Data_TS.Properties.VariableNames = {'BreakPointLocation', 'BreakpointDepth', 'Hs', 'WaveEnergy', 'RollerLength', 'WaveCelerity', 'Tp', 'Tm', 'WaveLength', 'WaterDepth', 'ShorelinePosition', 'SLA_S', 'SLA_L', 'RTR', 'Bathymetry'};
 
 % Show average daily values
 WP_daily = retime(Data_TS, 'daily', 'mean');
-WP_daily.Properties.VariableNames = {'BreakPointLocation', 'BreakpointDepth', 'Hs', 'WaveEnergy', 'RollerLength', 'WaveCelerity', 'Tp', 'Tm', 'WaveLength', 'WaterDepth', 'ShorelinePosition', 'SLA_S', 'SLA_L', 'RTR', 'Bathymetry_S', 'Bathymetry_L'};
+WP_daily.Properties.VariableNames = {'BreakPointLocation', 'BreakpointDepth', 'Hs', 'WaveEnergy', 'RollerLength', 'WaveCelerity', 'Tp', 'Tm', 'WaveLength', 'WaterDepth', 'ShorelinePosition', 'SLA_S', 'SLA_L', 'RTR', 'Bathymetry_S'};
 WP_daily 
 
 %% J: Save Outputs
