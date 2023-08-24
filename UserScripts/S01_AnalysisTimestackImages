@@ -70,7 +70,7 @@ BreakpointLocation = []; Cf1 = []; WLe1 = []; Depth_S = []; ShorePosition = []; 
 
 %% F: Coordinate System
 % Transfer pixel coordinates to real life coordinates 
-coordinates = load('G:\MATLAB_20221128\Sensors\Coordinates.txt');
+coordinates = load('G:\MATLAB\UserScripts\Coordinates.txt');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% END ALL USER INPUT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
