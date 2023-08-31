@@ -2372,3 +2372,11 @@ end
 % Multiply by 0.5
 S2 = S2 * 0.5;
 end
+
+function S=smooth2(M,nx,ny)
+
+S=[repmat(M(1,:),nx,1)' M' repmat(M(end,:),nx,1)']';
+S=[repmat(S(:,1),1,ny) S repmat(S(:,end),1,ny)];
+S=smoothc(S,nx-1,ny-1);
+
+end
